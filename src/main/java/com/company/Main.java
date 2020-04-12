@@ -22,7 +22,7 @@ public class Main {
                     for (int j = 0; j < tableSize; j++) {
                         int value = (i + 1) * (j + 1);
                         String tf = "%" + format + "d" + "|";
-                        String tf1 = "%" + format + 'd' + " ";
+                        String tf1 = "%" + format + "d" + " ";
                         if (j < tableSize - 1) {
                             System.out.printf(tf, value);
                         } else System.out.printf(tf1, value);
