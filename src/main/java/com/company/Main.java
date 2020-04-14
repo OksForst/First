@@ -8,7 +8,7 @@ public class Main {
     Scanner in = new Scanner(System.in);
         System.out.print("Введите размер таблицы:");
         if (!in.hasNextInt())
-            System.out.println("Запустите программу еще раз и введите целое положительное число");
+            System.out.println("Запустите программму еще раз и введите целое положительное число");
         else
     {
         int tableSize = in.nextInt();
@@ -19,7 +19,6 @@ public class Main {
     ////////////////////////////////////////////////////
     public static void main (String[] args) {
         setTableSize();
-
 }
 }
 
