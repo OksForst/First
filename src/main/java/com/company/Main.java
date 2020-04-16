@@ -5,12 +5,15 @@ import java.io.*;
 
 public class Main {
     private static int tableSize;
+    private static int format = 4;
+
+
 
     public static void getTableSize(){
         Scanner in = new Scanner(System.in);
         System.out.print("Введите размер таблицы:");
         if (!in.hasNextInt()) {
-            System.out.println("Ошибка. Ведите число");
+            System.out.println("Ошибка. Введите число");
             getTableSize();
         }
         else
@@ -19,9 +22,11 @@ public class Main {
             in.close();
         }
     }
+
+
+
     public static void checkTableSize() {
         if (tableSize > 0) {
-            int format = 4;
             String separator = ("-".repeat(format) + "+").repeat(tableSize - 1) + "-".repeat(format);
             for (int i = 0; i < tableSize; i++) {
                 for (int j = 0; j < tableSize; j++) {
@@ -35,6 +40,7 @@ public class Main {
                 }
                 System.out.println();
                 if (i < tableSize - 1) {
+
                     System.out.println(separator);
                 }
             }
