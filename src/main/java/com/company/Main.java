@@ -4,12 +4,10 @@ import java.util.Scanner;
 import java.io.*;
 
 public class Main {
-
     private static int tableSize;
     private static int format = 4;
     private static String separator = "";
     private static Scanner in;
-
 
 
     public static void getTableSize() {
@@ -25,6 +23,7 @@ public class Main {
             getTableSize();
         }
     }
+
     public static void separateTable() {
         separator = ("-".repeat(format) + "+").repeat(tableSize - 1) + "-".repeat(format);
 
