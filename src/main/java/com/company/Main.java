@@ -10,6 +10,8 @@ public class Main {
     private static String separator = "";
     private static Scanner in;
 
+
+
     public static void getTableSize() {
         in = new Scanner(System.in);
         System.out.print("Введите размер таблицы:");
@@ -23,9 +25,13 @@ public class Main {
             getTableSize();
         }
     }
+    public static void separateTable() {
+        separator = ("-".repeat(format) + "+").repeat(tableSize - 1) + "-".repeat(format);
+
+    }
 
     public static void printTable() {
-        String separator = ("-".repeat(format) + "+").repeat(tableSize - 1) + "-".repeat(format);
+        separateTable();
         for (int i = 0; i < tableSize; i++) {
             for (int j = 0; j < tableSize; j++) {
                 int value = (i + 1) * (j + 1);
@@ -44,7 +50,7 @@ public class Main {
         }
     }
 
-    ////////////////////////////////////////////////////
+
     public static void main(String[] args) {
         getTableSize();
         printTable();
