@@ -3,16 +3,19 @@ package com.company;
 import java.util.Scanner;
 import java.io.*;
 
-public class Main {
+public class MultiplicationTable {
     private static int tableSize;
     private static int format = 4;
     private static String separator = "";
     private static Scanner in;
 
-
     public static void getTableSize() {
         in = new Scanner(System.in);
         System.out.print("Введите размер таблицы:");
+        checkTableSize();
+    }
+
+    public static void checkTableSize() {
         if (in.hasNextInt()) {
             tableSize = in.nextInt();
             if (tableSize < 1) {
@@ -29,7 +32,7 @@ public class Main {
 
     }
 
-    public static void printTable() {
+    public static void printMultiplicationTable() {
         separateTable();
         for (int i = 0; i < tableSize; i++) {
             for (int j = 0; j < tableSize; j++) {
@@ -49,10 +52,9 @@ public class Main {
         }
     }
 
-
     public static void main(String[] args) {
         getTableSize();
-        printTable();
+        printMultiplicationTable();
         in.close();
     }
 }
