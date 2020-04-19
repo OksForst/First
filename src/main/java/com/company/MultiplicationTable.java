@@ -5,7 +5,7 @@ import java.io.*;
 
 public class MultiplicationTable {
     private static int tableSize;
-    private static int format = 4;
+    private static int FORMAT = 4;
     private static String separator = "";
     private static Scanner in;
 
@@ -28,7 +28,7 @@ public class MultiplicationTable {
     }
 
     public static void separateTable() {
-        separator = ("-".repeat(format) + "+").repeat(tableSize - 1) + "-".repeat(format);
+        separator = ("-".repeat(FORMAT) + "+").repeat(tableSize - 1) + "-".repeat(FORMAT);
 
     }
 
@@ -37,12 +37,10 @@ public class MultiplicationTable {
         for (int i = 0; i < tableSize; i++) {
             for (int j = 0; j < tableSize; j++) {
                 int value = (i + 1) * (j + 1);
-                String tf = "%" + format + "d" + "|";
-                String tf1 = "%" + format + "d" + ' ';
                 if (j < tableSize - 1) {
-                    System.out.printf(tf, value);
+                    System.out.printf("%" + FORMAT + "d" + "|", value);
                 } else {
-                    System.out.printf(tf1, value);
+                    System.out.printf("%" + FORMAT + "d" + ' ', value);
                 }
             }
             System.out.println();
