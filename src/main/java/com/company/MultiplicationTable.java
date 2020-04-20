@@ -1,7 +1,6 @@
 package com.company;
 
 import java.util.Scanner;
-import java.io.*;
 
 public class MultiplicationTable {
     private static int tableSize;
@@ -11,18 +10,18 @@ public class MultiplicationTable {
 
     public static void getTableSize() {
         in = new Scanner(System.in);
-        System.out.print("Введите размер таблицы:");
+        System.out.print("Введите размер таблицы от 1 до 32:");
         checkTableSize();
     }
 
     public static void checkTableSize() {
         if (in.hasNextInt()) {
             tableSize = in.nextInt();
-            if (tableSize < 1) {
+            if (tableSize < 1 || tableSize > 32) {
                 getTableSize();
             }
         } else {
-            System.out.println("Ошибка. Введите число");
+            System.out.println("Ошибка");
             getTableSize();
         }
     }
