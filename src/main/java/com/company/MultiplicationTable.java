@@ -6,8 +6,7 @@ public class MultiplicationTable {
     private static int tableSize;
     private static int maxValue = tableSize*tableSize;
     //String str = Integer.toString(i);
-    private static String maxValue1 = Integer.toString(maxValue);
-    private static int FORMAT = maxValue1.length();
+    private static int FORMAT = Integer.toString(maxValue).length();
     private static String separator = "";
     private static Scanner in;
 
