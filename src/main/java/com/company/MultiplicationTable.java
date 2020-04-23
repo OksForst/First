@@ -18,15 +18,12 @@ public class MultiplicationTable {
             tableSize = getTableSize(in);
         }
         return tableSize;
-
     }
 
     public static boolean checkTableSize(int tableSize) {
         boolean result = false;
         if ((tableSize < 1) || (tableSize > 32)) {
-
             result = true;
-
         }
         return result;
     }
