@@ -3,45 +3,46 @@ package com.company;
 import java.util.Scanner;
 
 public class MultiplicationTable {
-    private static int tableSize;
-    private static int maxValue = tableSize*tableSize;
-    //String str = Integer.toString(i);
-    private static int FORMAT = Integer.toString(maxValue).length();
-    private static String separator = "";
     private static Scanner in;
 
-    public static void getTableSize() {
-        in = new Scanner(System.in);
-        System.out.print("Введите размер таблицы от 1 до 32:");
-        checkTableSize();
-    }
+    public static int getTableSize(Scanner in) {
+        int tableSize;
 
-    public static void checkTableSize() {
         if (in.hasNextInt()) {
             tableSize = in.nextInt();
-            if (tableSize < 1 || tableSize > 32) {
-                getTableSize();
+            if (checkTableSize(tableSize)) {
+                tableSize = getTableSize(in);
             }
         } else {
             System.out.println("Ошибка");
-            getTableSize();
+            tableSize = getTableSize(in);
         }
-    }
-
-    public static void separateTable() {
-        separator = ("-".repeat(FORMAT) + "+").repeat(tableSize - 1) + "-".repeat(FORMAT);
+        return tableSize;
 
     }
 
-    public static void printMultiplicationTable() {
-        separateTable();
+    public static boolean checkTableSize(int tableSize) {
+        boolean result = false;
+        if ((tableSize < 1) || (tableSize > 32)) {
+
+            result = true;
+
+        }
+        return result;
+    }
+
+    public static void printMultiplicationTable(int tableSize) {
+        int maxValueTable = tableSize * tableSize;
+        int formatSize = String.valueOf(maxValueTable).length();
+        String separator = ("-".repeat(formatSize) + "+").repeat(tableSize - 1) + "-".repeat(formatSize);
         for (int i = 0; i < tableSize; i++) {
+
             for (int j = 0; j < tableSize; j++) {
                 int value = (i + 1) * (j + 1);
                 if (j < tableSize - 1) {
-                    System.out.printf("%" + FORMAT + "d" + "|", value);
+                    System.out.printf("%" + formatSize + "d" + "|", value);
                 } else {
-                    System.out.printf("%" + FORMAT + "d" + ' ', value);
+                    System.out.printf("%" + formatSize + "d" + ' ', value);
                 }
             }
             System.out.println();
@@ -52,8 +53,14 @@ public class MultiplicationTable {
     }
 
     public static void main(String[] args) {
-        getTableSize();
-        printMultiplicationTable();
-        in.close();
+        int num;
+        System.out.print("Введите размер таблицы от 1 до 32:");
+        try (Scanner in = new Scanner(System.in)) {
+            num = getTableSize(in);
+        }
+
+        //System.out.println(format);
+        printMultiplicationTable(num);
+        //in.close();
     }
 }
