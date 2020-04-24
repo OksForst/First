@@ -1,15 +1,18 @@
 package com.company;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.logging.Level;
 
 public class MultiplicationTable {
-    private static Scanner in;
 
-    public static int getTableSize(Scanner in) {
+    public static int getTableSize(BufferedReader in) throws IOException  {
         int tableSize;
-
-        if (in.hasNextInt()) {
-            tableSize = in.nextInt();
+        System.out.print("Введите размер таблицы от 1 до 32:");
+        String line = in.readLine();
+        if (checkIsNumber(line)) {
+            tableSize = Integer.parseInt(line);
             if (checkTableSize(tableSize)) {
                 tableSize = getTableSize(in);
             }
@@ -18,6 +21,15 @@ public class MultiplicationTable {
             tableSize = getTableSize(in);
         }
         return tableSize;
+    }
+
+    public static boolean checkIsNumber(String number) {
+        try {
+            Integer.parseInt(number);
+            return true;
+        } catch (NumberFormatException ex) {
+            return false;
+        }
     }
 
     public static boolean checkTableSize(int tableSize) {
@@ -49,15 +61,15 @@ public class MultiplicationTable {
         }
     }
 
-    public static void main(String[] args) {
-        int num;
-        System.out.print("Введите размер таблицы от 1 до 32:");
-        try (Scanner in = new Scanner(System.in)) {
-            num = getTableSize(in);
+    public static void main(String[] args){
+        int tableSize;
+        try (BufferedReader in = new BufferedReader(new InputStreamReader(System.in));) {
+            tableSize = getTableSize(in);
+        } catch (IOException ex) {
+            java.util.logging.Logger.getLogger(MultiplicationTable.class.getName()).log(Level.SEVERE, null, ex);
+            tableSize = 0;
         }
-
-        //System.out.println(format);
-        printMultiplicationTable(num);
-        //in.close();
+        printMultiplicationTable(tableSize);
     }
 }
+
