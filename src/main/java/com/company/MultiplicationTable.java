@@ -10,10 +10,9 @@ public class MultiplicationTable {
     public static int getTableSize(BufferedReader in) throws IOException {
         int tableSize;
         System.out.print("Введите размер таблицы от 1 до 32:");
-        String line = in.readLine();
-
-        if (checkIsInt(line)) {
-            tableSize = Integer.parseInt(line);
+        String valueTableSize = in.readLine();
+        if (checkIsInt(valueTableSize)) {
+            tableSize = Integer.parseInt(valueTableSize);
             if (checkTableSize(tableSize)) {
                 tableSize = getTableSize(in);
             }
