@@ -7,11 +7,12 @@ import java.util.logging.Level;
 
 public class MultiplicationTable {
 
-    public static int getTableSize(BufferedReader in) throws IOException  {
+    public static int getTableSize(BufferedReader in) throws IOException {
         int tableSize;
         System.out.print("Введите размер таблицы от 1 до 32:");
         String line = in.readLine();
-        if (checkIsNumber(line)) {
+
+        if (checkIsInt(line)) {
             tableSize = Integer.parseInt(line);
             if (checkTableSize(tableSize)) {
                 tableSize = getTableSize(in);
@@ -23,9 +24,9 @@ public class MultiplicationTable {
         return tableSize;
     }
 
-    public static boolean checkIsNumber(String number) {
+    public static boolean checkIsInt(String line) {
         try {
-            Integer.parseInt(number);
+            Integer.parseInt(line);
             return true;
         } catch (NumberFormatException ex) {
             return false;
@@ -45,7 +46,6 @@ public class MultiplicationTable {
         int formatSize = String.valueOf(maxValueTable).length();
         String separator = ("-".repeat(formatSize) + "+").repeat(tableSize - 1) + "-".repeat(formatSize);
         for (int i = 0; i < tableSize; i++) {
-
             for (int j = 0; j < tableSize; j++) {
                 int value = (i + 1) * (j + 1);
                 if (j < tableSize - 1) {
@@ -61,7 +61,7 @@ public class MultiplicationTable {
         }
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         int tableSize;
         try (BufferedReader in = new BufferedReader(new InputStreamReader(System.in));) {
             tableSize = getTableSize(in);
